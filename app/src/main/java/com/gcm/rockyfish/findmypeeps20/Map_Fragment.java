@@ -31,6 +31,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -106,94 +108,111 @@ public class Map_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.map_tab,container,false);
-        ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
-        mapPager.setSaveEnabled(false);
-        googleMap = (MapView) v.findViewById(R.id.googleMap);
-        gps = new GPSTracker(getActivity());
-        googleMap.onCreate(savedInstanceState);
-        googleMap.onResume();// needed to get the map to display immediately
-        Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
-        try {
-            MapsInitializer.initialize(getActivity().getApplicationContext());
-        } catch (Exception e) {
-            e.printStackTrace();
+            Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+            ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+            mapPager.setSaveEnabled(false);
+            googleMap = (MapView) v.findViewById(R.id.googleMap);
+            gps = new GPSTracker(getActivity());
+            googleMap.onCreate(savedInstanceState);
+            googleMap.onResume();// needed to get the map to display immediately
+            try {
+                MapsInitializer.initialize(getActivity().getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        if(checkPlayServices()) {
+            googleMap.getMap().setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                //called once the map is done loading
+                public void onMapLoaded() {
+                    if (gps.isGPSEnabledOrNot() && gps.canGetLocation() && gps.getLatitude() != 0 && gps.getLongitude() != 0) {
+                        latitude = gps.getLocation().getLatitude();
+                        longitude = gps.getLocation().getLongitude();
+                        userCurrentLocation = new LatLng(latitude, longitude);
+                        //if (isOtherUserClicked) {
+                        //get the extras
+                        //  otherUserLat = getIntent().getExtras().getDouble("otherLat");
+                        //otherUserLong = getIntent().getExtras().getDouble("otherLong");
+                        //otherUserUsername = getIntent().getExtras().getString("userUsername");
+                        //otherUserComment = getIntent().getExtras().getString("otherComment");
+                        //zoom to show both the users location and the user clicked location
+                        //otherUserLocation = new LatLng(otherUserLat, otherUserLong);
+                        //LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                        //builder.include(userCurrentLocation);
+                        //builder.include(otherUserLocation);
+                        //bounds = builder.build();
+                        //String urlTest = "http://skyrealmstudio.com/img/" + otherUserUsername.toLowerCase() + ".jpg";
+                        //new DownloadImageTask().execute(urlTest, otherUserUsername);
+                        //int padding = 50;
+                        //googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+                        //userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+                        //} else {
+                        //set friends on the map
+                        startupRun = new MarkerScript();
+                        startupRun.execute();
+                        // userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+                        //}
+                    } else {
+                        gps.showSettingsAlert();
+                    }
+                }
+            });
         }
 
-        googleMap.getMap().setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-            @Override
-            //called once the map is done loading
-            public void onMapLoaded() {
-                if (gps.isGPSEnabledOrNot() && gps.canGetLocation() && gps.getLatitude() != 0 && gps.getLongitude() != 0) {
-                    latitude = gps.getLocation().getLatitude();
-                    longitude = gps.getLocation().getLongitude();
-                    userCurrentLocation = new LatLng(latitude, longitude);
-                    //if (isOtherUserClicked) {
-                    //get the extras
-                    //  otherUserLat = getIntent().getExtras().getDouble("otherLat");
-                    //otherUserLong = getIntent().getExtras().getDouble("otherLong");
-                    //otherUserUsername = getIntent().getExtras().getString("userUsername");
-                    //otherUserComment = getIntent().getExtras().getString("otherComment");
-                    //zoom to show both the users location and the user clicked location
-                    //otherUserLocation = new LatLng(otherUserLat, otherUserLong);
-                    //LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                    //builder.include(userCurrentLocation);
-                    //builder.include(otherUserLocation);
-                    //bounds = builder.build();
-                    //String urlTest = "http://skyrealmstudio.com/img/" + otherUserUsername.toLowerCase() + ".jpg";
-                    //new DownloadImageTask().execute(urlTest, otherUserUsername);
-                    //int padding = 50;
-                    //googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
-                    //userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
-                    //} else {
-                    //set friends on the map
-                    startupRun = new MarkerScript();
-                    startupRun.execute();
-                    // userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+            updateLocationButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //build a dialog for sending the location
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setView(R.layout.activity_popup_comment);
+                    if (gps.isGPSEnabledOrNot() && gps.canGetLocation()) {
+                        //sends a alert dialog making sure they want to delete the user
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Dialog dialoger = (Dialog) dialog;
+                                switch (which) {
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        EditText commentEditText = (EditText) dialoger.findViewById(R.id.commentEditText);
+                                        comments = commentEditText.getText().toString();
+                                        new getLocation().execute();
+                                        break;
 
-                    //}
-                } else {
-                    gps.showSettingsAlert();
-                }
-            }
-        });
-
-        updateLocationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //build a dialog for sending the location
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setView(R.layout.activity_popup_comment);
-                if (gps.isGPSEnabledOrNot() && gps.canGetLocation()) {
-                    //sends a alert dialog making sure they want to delete the user
-                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Dialog dialoger = (Dialog) dialog;
-                            switch (which) {
-                                case DialogInterface.BUTTON_POSITIVE:
-                                    EditText commentEditText = (EditText) dialoger.findViewById(R.id.commentEditText);
-                                    comments = commentEditText.getText().toString();
-                                    new getLocation().execute();
-                                    break;
-
-                                case DialogInterface.BUTTON_NEGATIVE:
-                                    //No button clicked
-                                    break;
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        //No button clicked
+                                        break;
+                                }
                             }
-                        }
-                    };
-                    //build the dialog box
-                    builder.setTitle("Send Location");
-                    builder.setPositiveButton("Update Location", dialogClickListener);
-                    builder.setNegativeButton("Cancel", dialogClickListener);
-                    builder.create();
-                    builder.show();
-                } else {
-                    gps.showSettingsAlert();
+                        };
+                        //build the dialog box
+                        builder.setTitle("Send Location");
+                        builder.setPositiveButton("Update Location", dialogClickListener);
+                        builder.setNegativeButton("Cancel", dialogClickListener);
+                        builder.create();
+                        builder.show();
+                    } else {
+                        gps.showSettingsAlert();
+                    }
                 }
-            }
-        });
+            });
+
         return v;
+    }
+
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil
+                .isGooglePlayServicesAvailable(getActivity());
+        // When Play services not found in device
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                // Show Error dialog to install Play services
+                GooglePlayServicesUtil.getErrorDialog(resultCode, getActivity(), 9000).show();
+            } else {
+                Toast.makeText(getActivity(), "Google Play Services are not all up to date, would you like to update?", Toast.LENGTH_LONG).show();
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -489,7 +508,10 @@ public class Map_Fragment extends Fragment {
 
                 new DownloadImageTask().execute(urlTest, user);
             }
-            //userMarker.remove();
+
+            if(userMarker != null) {
+                userMarker.remove();
+            }
             userMarker = googleMap.getMap().addMarker(new MarkerOptions().position(userCurrentLocation).title(user).icon(BitmapDescriptorFactory.fromBitmap(icon)));
             gps.stopUsingGps();
             pDialog.dismiss();

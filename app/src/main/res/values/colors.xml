@@ -7,4 +7,5 @@
     <color name="ColorPrimaryDark">#2D5BB7</color>
     <color name="tabsScrollColor">#000000</color>
     <color name="buttonbg">#eaf1f9</color>
+    <color name="darkgrey">#000000</color>
 </resources>

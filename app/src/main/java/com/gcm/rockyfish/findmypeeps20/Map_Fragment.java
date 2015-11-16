@@ -1,6 +1,7 @@
 package com.gcm.rockyfish.findmypeeps20;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -26,13 +27,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
 import android.widget.ArrayAdapter;
-=======
 import android.view.inputmethod.InputMethodManager;
->>>>>>> origin/master
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -69,6 +69,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -108,7 +109,7 @@ public class Map_Fragment extends Fragment {
     String otherUserComment;
     ArrayList<String> groupnames;
     int groupnum;
-    ArrayList<ArrayList<String>> groupFinal;
+    List<ArrayList<String>> groupFinal;
 
 
     @Override
@@ -561,6 +562,7 @@ public class Map_Fragment extends Fragment {
             // Create a new HttpClient and Post Header
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost("http://www.skyrealmstudio.com/cgi-bin/testcgi-bin/ListGroups.py");
+            groupFinal = new ArrayList<ArrayList<String>>();
 
 
             try {
@@ -591,12 +593,15 @@ public class Map_Fragment extends Fragment {
                     groups = json.getJSONObject(counter).getString("groupnames");
                     groupnum = json.getJSONObject(counter).getInt("groupnumber");
                     groupnames.add(groups);
-                    groupFinal.get(counter).add(0, String.valueOf(groups));
-                    groupFinal.get(counter).add(1, String.valueOf(groupnum));
+                    ArrayList<String> check = new ArrayList<String>();
+                    check.add(groups);
+                    check.add(String.valueOf(groupnum));
+                    groupFinal.add(check);
                     Log.d("Message:", groupnames.get(counter));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            Log.d("Message", String.valueOf(groupFinal));
             return null;
 
         }
@@ -609,9 +614,16 @@ public class Map_Fragment extends Fragment {
             View convertView = (View) inflater.inflate(R.layout.activity_popup_groups, null);
             alertDialog.setView(convertView);
             ListView lv = (ListView) convertView.findViewById(R.id.grouplistView);
-            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.activity_group_list_layout, R.id.groupname, groupFinal.get(0));
+            groupnames.clear();
+            for(int i = 0; i < groupFinal.size(); i++)
+            {
+                if(!groupFinal.get(i).get(0).equals(""))
+                groupnames.add(groupFinal.get(i).get(0));
+            }
+            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.activity_group_list_layout, R.id.groupname, groupnames);
             lv.setAdapter(adapter);
             alertDialog.show();
+            pDialog.cancel();
         }
     }
 

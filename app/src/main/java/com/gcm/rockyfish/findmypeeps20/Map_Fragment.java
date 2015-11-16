@@ -38,8 +38,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -137,6 +135,7 @@ public class Map_Fragment extends Fragment {
 
 =======
         View v =inflater.inflate(R.layout.map_tab,container,false);
+<<<<<<< HEAD
         final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
@@ -192,6 +191,59 @@ public class Map_Fragment extends Fragment {
             });
         }
 
+=======
+        ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+        mapPager.setSaveEnabled(false);
+        googleMap = (MapView) v.findViewById(R.id.googleMap);
+        gps = new GPSTracker(getActivity());
+        googleMap.onCreate(savedInstanceState);
+        googleMap.onResume();// needed to get the map to display immediately
+        Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        googleMap.getMap().setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            //called once the map is done loading
+            public void onMapLoaded() {
+                if (gps.isGPSEnabledOrNot() && gps.canGetLocation() && gps.getLatitude() != 0 && gps.getLongitude() != 0) {
+                    latitude = gps.getLocation().getLatitude();
+                    longitude = gps.getLocation().getLongitude();
+                    userCurrentLocation = new LatLng(latitude, longitude);
+                    //if (isOtherUserClicked) {
+                    //get the extras
+                    //  otherUserLat = getIntent().getExtras().getDouble("otherLat");
+                    //otherUserLong = getIntent().getExtras().getDouble("otherLong");
+                    //otherUserUsername = getIntent().getExtras().getString("userUsername");
+                    //otherUserComment = getIntent().getExtras().getString("otherComment");
+                    //zoom to show both the users location and the user clicked location
+                    //otherUserLocation = new LatLng(otherUserLat, otherUserLong);
+                    //LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                    //builder.include(userCurrentLocation);
+                    //builder.include(otherUserLocation);
+                    //bounds = builder.build();
+                    //String urlTest = "http://skyrealmstudio.com/img/" + otherUserUsername.toLowerCase() + ".jpg";
+                    //new DownloadImageTask().execute(urlTest, otherUserUsername);
+                    //int padding = 50;
+                    //googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+                    //userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+                    //} else {
+                    //set friends on the map
+                    startupRun = new MarkerScript();
+                    startupRun.execute();
+                    // userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+
+                    //}
+                } else {
+                    gps.showSettingsAlert();
+                }
+            }
+        });
+
+>>>>>>> parent of e23bf53... cvcvcvc
         updateLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -227,6 +279,7 @@ public class Map_Fragment extends Fragment {
                     gps.showSettingsAlert();
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
             }
         });
 
@@ -246,10 +299,11 @@ public class Map_Fragment extends Fragment {
                 GooglePlayServicesUtil.getErrorDialog(resultCode, getActivity(), 9000).show();
             } else {
                 Toast.makeText(getActivity(), "Google Play Services are not all up to date, would you like to update?", Toast.LENGTH_LONG).show();
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
             }
-            return false;
-        }
-        return true;
+        });
+        return v;
     }
 
     @Override
@@ -544,10 +598,14 @@ public class Map_Fragment extends Fragment {
 
                 new DownloadImageTask().execute(urlTest, user);
             }
+<<<<<<< HEAD
 
             if (userMarker != null) {
                 userMarker.remove();
             }
+=======
+            //userMarker.remove();
+>>>>>>> parent of e23bf53... cvcvcvc
             userMarker = googleMap.getMap().addMarker(new MarkerOptions().position(userCurrentLocation).title(user).icon(BitmapDescriptorFactory.fromBitmap(icon)));
             gps.stopUsingGps();
             pDialog.dismiss();

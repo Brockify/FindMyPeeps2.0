@@ -136,6 +136,7 @@ public class Map_Fragment extends Fragment {
 =======
         View v =inflater.inflate(R.layout.map_tab,container,false);
 <<<<<<< HEAD
+<<<<<<< HEAD
         final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
@@ -205,6 +206,21 @@ public class Map_Fragment extends Fragment {
             e.printStackTrace();
         }
 
+=======
+        ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+        mapPager.setSaveEnabled(false);
+        googleMap = (MapView) v.findViewById(R.id.googleMap);
+        gps = new GPSTracker(getActivity());
+        googleMap.onCreate(savedInstanceState);
+        googleMap.onResume();// needed to get the map to display immediately
+        Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+>>>>>>> parent of e23bf53... cvcvcvc
         googleMap.getMap().setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             //called once the map is done loading
@@ -243,6 +259,9 @@ public class Map_Fragment extends Fragment {
             }
         });
 
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
 >>>>>>> parent of e23bf53... cvcvcvc
         updateLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -280,6 +299,7 @@ public class Map_Fragment extends Fragment {
                 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             }
         });
 
@@ -299,6 +319,8 @@ public class Map_Fragment extends Fragment {
                 GooglePlayServicesUtil.getErrorDialog(resultCode, getActivity(), 9000).show();
             } else {
                 Toast.makeText(getActivity(), "Google Play Services are not all up to date, would you like to update?", Toast.LENGTH_LONG).show();
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
 =======
 >>>>>>> parent of e23bf53... cvcvcvc
             }
@@ -599,10 +621,14 @@ public class Map_Fragment extends Fragment {
                 new DownloadImageTask().execute(urlTest, user);
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             if (userMarker != null) {
                 userMarker.remove();
             }
+=======
+            //userMarker.remove();
+>>>>>>> parent of e23bf53... cvcvcvc
 =======
             //userMarker.remove();
 >>>>>>> parent of e23bf53... cvcvcvc

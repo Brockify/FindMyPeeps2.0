@@ -10,7 +10,11 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="603d2c33-6537-41d7-adea-54d5047352c8" name="Default" comment="" /><list default="true" id="603affd5-9564-4e21-bfeb-ab5050992f83" name="Default" comment="" />
+=======
+    <list default="true" id="46473b3a-7cbb-4e19-8499-4a033f42b535" name="Default" comment="" />
+>>>>>>> parent of e23bf53... cvcvcvc
 =======
     <list default="true" id="46473b3a-7cbb-4e19-8499-4a033f42b535" name="Default" comment="" />
 >>>>>>> parent of e23bf53... cvcvcvc
@@ -41,6 +45,7 @@
   <component name="FileEditorManager">
     <leaf>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file leaf-file-name="Map_Fragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Map_Fragment.java">
 =======
@@ -66,16 +71,43 @@
               <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
               <folding />
 =======
+=======
+      <file leaf-file-name="HTTPSendPost.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/HTTPSendPost.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+>>>>>>> parent of e23bf53... cvcvcvc
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#2607#2622#0" expanded="true" />
                 <element signature="e#4345#4360#0" expanded="true" />
                 <element signature="e#5410#5425#0" expanded="true" />
               </folding>
+<<<<<<< HEAD
+=======
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.7941175">
+              <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+              <folding>
+                <element signature="e#262#297#0" expanded="true" />
+                <element signature="e#323#358#0" expanded="true" />
+                <element signature="e#382#415#0" expanded="true" />
+              </folding>
+>>>>>>> parent of e23bf53... cvcvcvc
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -108,10 +140,16 @@
       <file leaf-file-name="Login.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Login.java">
           <provider selected="true" editor-type-id="text-editor">
+=======
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> parent of e23bf53... cvcvcvc
             <state vertical-scroll-proportion="0.47826087">
               <caret line="165" column="17" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> parent of e23bf53... cvcvcvc
               </folding>
             </state>
@@ -139,11 +177,14 @@
                 <element signature="e#13490#13491#0" expanded="true" />
                 <element signature="e#15898#15913#0" expanded="true" />
                 <element signature="e#19960#19975#0" expanded="true" />
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Map_Fragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Map_Fragment.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -170,11 +211,16 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="47" column="47" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="47" />
 =======
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
       <file leaf-file-name="TabLayout.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/TabLayout.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-5.5">
               <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
 >>>>>>> parent of e23bf53... cvcvcvc
               <folding />
             </state>
@@ -242,11 +288,70 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-37.27778">
+              <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+              <folding>
+                <element signature="e#1701#1740#0" expanded="true" />
+                <element signature="e#1941#1959#0" expanded="true" />
+                <element signature="e#2080#2098#0" expanded="true" />
+                <element signature="e#2462#2480#0" expanded="true" />
+                <element signature="e#2640#2658#0" expanded="true" />
+                <element signature="e#2816#2834#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Forgot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Forgot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3057#3072#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Register.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Register.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4758#4773#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Map_Fragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Map_Fragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.6111111">
+              <caret line="194" column="11" selection-start-line="163" selection-start-column="16" selection-end-line="194" selection-end-column="11" />
+              <folding>
+                <element signature="e#4178#6522#0" expanded="true" />
+                <element signature="e#6521#6522#0" expanded="true" />
+                <element signature="e#6574#8448#0" expanded="true" />
+                <element signature="e#8447#8448#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
@@ -255,6 +360,8 @@
       </list>
     </option>
 =======
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
         <option value="Class" />
       </list>
     </option>
@@ -1624,8 +1731,12 @@
     <option name="modificationStamps">
       <map>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry key="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0" value="4341379543531" />
         <entry key="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0" value="4341249325624" />
+=======
+        <entry key="C:\Users\Andrew\Documents\GitHub\FindMyPeeps2.0" value="4340552865546" />
+>>>>>>> parent of e23bf53... cvcvcvc
 =======
         <entry key="C:\Users\Andrew\Documents\GitHub\FindMyPeeps2.0" value="4340552865546" />
 >>>>>>> parent of e23bf53... cvcvcvc
@@ -1975,6 +2086,7 @@
     <option name="CHANGED_PATHS">
       <list>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/../FindMyPeepsApp/app/src/main/java/com/skyrealm/brockyy/findmypeepsapp/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/activity_group_list_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/map_tab.xml" />
@@ -1994,6 +2106,8 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Friend_Fragment.java" />
 =======
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
         <option value="$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/HTTPSendPost.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/JSONParser.java" />
@@ -2001,6 +2115,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Forgot.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Register.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Login.java" />
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
 >>>>>>> parent of e23bf53... cvcvcvc
       </list>
     </option>
@@ -2020,6 +2137,7 @@
   </component>
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="893" />
     <option name="width" value="1035" />
     <option name="height" value="1038" />
@@ -2027,10 +2145,15 @@
     <option name="width" value="1924" />
     <option name="height" value="1056" />
 =======
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
     <option name="height" value="1048" />
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
 >>>>>>> parent of e23bf53... cvcvcvc
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -2067,6 +2190,93 @@
               <option name="myItemId" value="FindMyPeeps2.0" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FindMyPeeps2.0" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FindMyPeeps2.0" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FindMyPeeps2.0" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FindMyPeeps2.0" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="findmypeeps20" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FindMyPeeps2.0" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+>>>>>>> parent of e23bf53... cvcvcvc
             <PATH_ELEMENT>
               <option name="myItemId" value="Gradle Scripts" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
@@ -2173,6 +2383,7 @@
         </subPane>
       </pane>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -2213,6 +2424,15 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
+=======
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="FullScreen" value="false" />
+    <property name="recentsLimit" value="5" />
+>>>>>>> parent of e23bf53... cvcvcvc
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../FindMyPeepsApp" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="169.254.9.101:5555" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
@@ -2224,6 +2444,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.gcm.rockyfish.findmypeeps20" />
     </key>
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
 >>>>>>> parent of e23bf53... cvcvcvc
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -2420,6 +2643,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <changelist id="603d2c33-6537-41d7-adea-54d5047352c8" name="Default" comment="" />
       <created>1447126777138</created>
       <option name="number" value="Default" />
@@ -2429,15 +2653,21 @@
       <option name="number" value="Default" />
       <updated>1447427587561</updated>
 =======
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
       <changelist id="46473b3a-7cbb-4e19-8499-4a033f42b535" name="Default" comment="" />
       <created>1446851820077</created>
       <option name="number" value="Default" />
       <updated>1446851820077</updated>
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
 >>>>>>> parent of e23bf53... cvcvcvc
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <frame x="893" y="0" width="1035" height="1038" extended-state="0" />
     <editor active="true" />
@@ -2466,6 +2696,12 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> parent of e23bf53... cvcvcvc
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2486,11 +2722,15 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
 >>>>>>> parent of e23bf53... cvcvcvc
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295699" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2536,6 +2776,11 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
 >>>>>>> parent of e23bf53... cvcvcvc
+=======
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+>>>>>>> parent of e23bf53... cvcvcvc
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2550,6 +2795,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <breakpoint-manager>
       <option name="time" value="4" />
@@ -2567,10 +2813,18 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/TabLayout.java">
+=======
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/HTTPSendPost.java">
+>>>>>>> parent of e23bf53... cvcvcvc
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+<<<<<<< HEAD
             <element signature="imports" expanded="true" />
             <element signature="e#3042#3057#0" expanded="true" />
             <element signature="e#4906#7389#0" expanded="true" />
@@ -2586,16 +2840,54 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+=======
+            <element signature="e#2607#2622#0" expanded="true" />
+            <element signature="e#4345#4360#0" expanded="true" />
+            <element signature="e#5410#5425#0" expanded="true" />
+          </folding>
+>>>>>>> parent of e23bf53... cvcvcvc
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_popup_groups.xml">
       <provider editor-type-id="text-editor">
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/HTTPSendPost.java">
+      <provider selected="true" editor-type-id="text-editor">
+>>>>>>> parent of e23bf53... cvcvcvc
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#2607#2622#0" expanded="true" />
+            <element signature="e#4345#4360#0" expanded="true" />
+            <element signature="e#5410#5425#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.7941175">
+          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+          <folding>
+            <element signature="e#262#297#0" expanded="true" />
+            <element signature="e#323#358#0" expanded="true" />
+            <element signature="e#382#415#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/JSONParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10666667">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -2603,6 +2895,7 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_group_list_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2624,14 +2917,51 @@
             <element signature="e#5410#5425#0" expanded="true" />
           </folding>
 >>>>>>> parent of e23bf53... cvcvcvc
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-37.27778">
+          <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+          <folding>
+            <element signature="e#1701#1740#0" expanded="true" />
+            <element signature="e#1941#1959#0" expanded="true" />
+            <element signature="e#2080#2098#0" expanded="true" />
+            <element signature="e#2462#2480#0" expanded="true" />
+            <element signature="e#2640#2658#0" expanded="true" />
+            <element signature="e#2816#2834#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Forgot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3057#3072#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Register.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4758#4773#0" expanded="true" />
+          </folding>
+>>>>>>> parent of e23bf53... cvcvcvc
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Pending_Fragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/TabLayout.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0">
           <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
           <folding>
@@ -2939,6 +3269,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+=======
+        <state vertical-scroll-proportion="-5.5">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+>>>>>>> parent of e23bf53... cvcvcvc
           <folding />
         </state>
       </provider>
@@ -3009,6 +3343,29 @@
             <element signature="e#13490#13491#0" expanded="true" />
             <element signature="e#15898#15913#0" expanded="true" />
             <element signature="e#19960#19975#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Map_Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6111111">
+          <caret line="194" column="11" selection-start-line="163" selection-start-column="16" selection-end-line="194" selection-end-column="11" />
+          <folding>
+            <element signature="e#4178#6522#0" expanded="true" />
+            <element signature="e#6521#6522#0" expanded="true" />
+            <element signature="e#6574#8448#0" expanded="true" />
+            <element signature="e#8447#8448#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/gcm/rockyfish/findmypeeps20/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47826087">
+          <caret line="165" column="17" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

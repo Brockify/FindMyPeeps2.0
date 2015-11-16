@@ -2,7 +2,11 @@
   <library name="org.apache.http.legacy-android-23">
     <CLASSES>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-23/optional/org.apache.http.legacy.jar!/" />
+=======
+      <root url="jar://$USER_HOME$/AppData/Local/Android/sdk1/platforms/android-23/optional/org.apache.http.legacy.jar!/" />
+>>>>>>> parent of e23bf53... cvcvcvc
 =======
       <root url="jar://$USER_HOME$/AppData/Local/Android/sdk1/platforms/android-23/optional/org.apache.http.legacy.jar!/" />
 >>>>>>> parent of e23bf53... cvcvcvc

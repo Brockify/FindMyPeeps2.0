@@ -6,8 +6,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,13 +22,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +42,7 @@ import com.google.android.gms.tagmanager.Container;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -75,6 +84,13 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
     private String userUsername;
     final String[] userDelete = {null};
     private boolean mIsViewInited;
+    search_person search;
+    ImageButton addButton;
+    List otherUsers;
+    String finalresult = null;
+    SearchView sv;
+    SearchAdapter searchAdapter;
+    ArrayList Friends;
 
 
 
@@ -91,6 +107,30 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
+        Friends = new ArrayList();
+
+        sv = (SearchView) v.findViewById(R.id.searchView2);
+        sv.onActionViewExpanded();
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                search = new search_person();
+                search.execute(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(search != null) {
+                    if (search.getStatus() == AsyncTask.Status.RUNNING) {
+                        search.cancel(true);
+                    }
+                }
+                search = new search_person();
+                search.execute(newText);
+                return false;
+            }
+        });
 
         //declare new FriendsList as ArrayList
         FriendsList = new ArrayList<String>();
@@ -118,7 +158,7 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
                 swipeLayout.setEnabled(enable);
             }
         });
-
+        sv.clearFocus();
         return v;
     }
 
@@ -268,7 +308,7 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
             LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.friends_list_items, null);
             TextView usernameTextView = (TextView) v.findViewById(R.id.username);
-            usernameTextView.setText(FriendsList.get(position));
+            usernameTextView.setText(friendslist.get(position));
 
             Button delete = (Button) v.findViewById(R.id.deleteButton);
             delete.setOnClickListener(new View.OnClickListener() {
@@ -323,6 +363,60 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
             return v;
         }
     }
+
+    class SearchAdapter extends BaseAdapter {
+        private List<String> friendslist;
+        private Activity activity;
+
+        public SearchAdapter(Activity activity, List<String> items) {
+            this.friendslist = items;
+            this.activity = activity;
+        }
+
+        @Override
+        public int getCount() {
+            return friendslist.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v;
+            LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = inflater.inflate(R.layout.searchable_list_items, null);
+            TextView usernameTextView = (TextView) v.findViewById(R.id.username);
+            addButton = (ImageButton) v.findViewById(R.id.addButtonSearchable);
+            if (finalresult.equals("\nadded\n")) {
+                addButton.setVisibility(View.VISIBLE);
+            } else if (finalresult.equals("\nusers already friends\n")) {
+                Toast.makeText(getActivity(), "users already friends", Toast.LENGTH_LONG).show();
+            } else {
+                addButton.setImageResource(R.drawable.green_add);
+                addButton.setVisibility(View.INVISIBLE);
+            }
+
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addButton.setImageResource(R.drawable.checkbox);
+                }
+            });
+
+            usernameTextView.setText(otherUsers.get(position).toString());
+            return v;
+        }
+    }
+
+
     class getSpecificUserLocation extends AsyncTask<String, Void, Void>
     {
         @Override
@@ -413,6 +507,72 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
                 // Insert the fragment by replacing any existing fragment
                 final FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.friendFragment, fragment).addToBackStack("next").commit();
+            }
+        }
+    }
+
+    class search_person extends AsyncTask<String, Void, String> {
+        String otherUser = null;
+
+        @Override
+        protected String doInBackground(String... strings) {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://www.skyrealmstudio.com/cgi-bin/SearchPerson.py");
+            String responseString = null;
+            otherUser = strings[0];
+
+            try {
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("Username", strings[0]));
+                nameValuePairs.add(new BasicNameValuePair("User", "rockyfish"));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                // Execute HTTP Post Request
+                HttpResponse response = httpclient.execute(httppost);
+                responseString = EntityUtils.toString(response.getEntity());
+
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return responseString;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Friends.clear();
+            otherUsers = new ArrayList<String>();
+            otherUsers.add(otherUser);
+            if (otherUser.length() >= 4) {
+                searchAdapter = new SearchAdapter(getActivity(), otherUsers);
+                finalresult = result;
+                if (result.equals("\nadded\n")) {
+                    friendListView.setAdapter(searchAdapter);
+                } else if (result.equals("\nusers already friends\n")) {
+                    Toast.makeText(getActivity(), "users already friends", Toast.LENGTH_LONG).show();
+                } else {
+                    friendListView.setAdapter(searchAdapter);
+                }
+            } else {
+                if(otherUser.equals(""))
+                {
+                    adapter = new FriendsAdapter(getActivity(), FriendsList);
+                } else {
+                    for(int i = 0; i < FriendsList.size(); i++)
+                    {
+                        if(otherUser.toLowerCase().equals(FriendsList.get(i).substring(0, otherUser.length()).toLowerCase()))
+                        {
+                            Friends.add(FriendsList.get(i));
+                        }
+                    }
+                }
+                if(Friends.size() != 0) {
+                    adapter = new FriendsAdapter(getActivity(), Friends);
+                } else {
+                    adapter = new FriendsAdapter(getActivity(), FriendsList);
+                }
+                friendListView.setAdapter(adapter);
             }
         }
     }

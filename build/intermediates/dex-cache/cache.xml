@@ -2,6 +2,7 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -35,6 +36,41 @@
         revision="23.0.1"
         sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-5ac6d4a3fd72d3586ba2dd3fdb4e2933953c1b19.jar" />
+=======
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3b05c18f60969ecc2ba49c0409c4b96be2d9cb0c">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-04a39e1a2a1d556b439dbe6606f61fb6418e3133.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-332851970afc8e289145b1b9d645ba4fc3663d6f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-02270842b0501e71fc1bf3623f113e09c257819c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-e32126d8bea1d4c27df93f26a7378bcad8fd4a7c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-e93d70e4f3656f4307e18303a31a18322524fc50.jar" />
+>>>>>>> origin/master
     </item>
     <item
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
@@ -44,6 +80,7 @@
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-cdd22c54d5967ad8c8ace4c88bc2d2158ab9e304.jar" />
     </item>
     <item
+<<<<<<< HEAD
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -59,12 +96,16 @@
     </item>
     <item
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.1.0\jars\classes.jar"
+=======
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.1.0\jars\classes.jar"
+>>>>>>> origin/master
         jumboMode="false"
         revision="23.0.1"
         sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-8d2473ec62539b1ad464505724a29866e2f0a48d.jar" />
     </item>
     <item
+<<<<<<< HEAD
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -112,6 +153,55 @@
         revision="23.0.1"
         sha1="95758a2905669affbffc5ddd262921d375674fad">
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-75a18ab57cc7afeff7cdfbe2f7fde189c87b4426.jar" />
+=======
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-02597f7bc14de2e8008ad9fec540b5da8d2e4ecc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-dca220e875be4a73b0f373c32c2d21c88b8bf741.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-0e717950fcfe66f4a8c492933aa70b54180d87b9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="95758a2905669affbffc5ddd262921d375674fad">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-cb5628b0657f5d29c9293755c255c9436996e8f2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-bb95762cbabc1fe2c3cf8c53b3138a1d7dd7e523.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="17449c47df35c754b257532052f1270c444f7993">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-be7be9fc3d25063acd000b20f95286ad6e6c9cd8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-ae1f58458953e204c184a9a5c6b802dc0e64890b.jar" />
+>>>>>>> origin/master
     </item>
     <item
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.1.0\jars\classes.jar"
@@ -121,6 +211,7 @@
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-50bffb4008048a6fbd5542e006b8f246b45016c5.jar" />
     </item>
     <item
+<<<<<<< HEAD
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -189,6 +280,76 @@
         revision="23.0.1"
         sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-e7e66fd952eb5b2892f8ae803df065e526bc7ad2.jar" />
+=======
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-29efc3d23df8e7730e367c39f096ce61cba6245c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-a4b8aa231e44ffe3765b4fccae287ae4ec13079e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-eed228c1b6c562ffdfeec96a32c634940b4a9de9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-05aa5e2276b3fd9f60a9efd13efba99c983ea694.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3178362320bcf51228835b60ff978efadfd1f783">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-bda37719460c04da4899f82dd494cb5cf91acd63.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-ad623f8d246b44028a97b268955fe9b568c94b11.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-2807c9d1a603dc02a37bdbed3e1e7cfdf815184f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="482de223655d06253cc6a4955d653f8994169500">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-4ee022ffcc07f8124f08a8c0c2281106cadf5114.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\.gradle\caches\modules-2\files-2.1\org.jbundle.util.osgi.wrapped\org.jbundle.util.osgi.wrapped.org.apache.http.client\4.1.2\98c86e42679fe7ac066f6c242e0d14f0bce0bb7c\org.jbundle.util.osgi.wrapped.org.apache.http.client-4.1.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="98c86e42679fe7ac066f6c242e0d14f0bce0bb7c">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\org.jbundle.util.osgi.wrapped.org.apache.http.client-4.1.2-8ed48ad7e2cf9d0f215630fc59239bde3f23245e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-01d54aaff8abc5427cbf3d93ed201c15e540bdde.jar" />
+>>>>>>> origin/master
     </item>
     <item
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
@@ -198,11 +359,33 @@
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-b48a9f251c678f76a311efd757babc1598e6e6d5.jar" />
     </item>
     <item
+<<<<<<< HEAD
         jar="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
         <dex dex="C:\Users\zenit_000\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-0857a72d11c4f97733bfe5961fa386b40545e7a6.jar" />
+=======
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-a62292dd17a546d2247eb5c9cb95bc05e7dacf05.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcb5b75baf05d92e61d5706737200ee55949f97b">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-9a039af5a89518c7c2b6d0f127d80a1e06901c4d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="C:\Users\Brockyy\Documents\GitHub\FindMyPeeps2.0\app\build\intermediates\pre-dexed\debug\classes-2b3dcabec65b6c8f6ef19ec11d3bc61f30bac4ac.jar" />
+>>>>>>> origin/master
     </item>
 
 </items>

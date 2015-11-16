@@ -26,7 +26,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.ArrayAdapter;
+=======
+import android.view.inputmethod.InputMethodManager;
+>>>>>>> origin/master
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -109,6 +113,7 @@ public class Map_Fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+<<<<<<< HEAD
         View v = inflater.inflate(R.layout.map_tab, container, false);
         Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
         Button GroupsButton = (Button)v.findViewById(R.id.GroupsButton);
@@ -130,6 +135,22 @@ public class Map_Fragment extends Fragment {
                 groupnames = new ArrayList<String>();
                 new getGroups().execute();
 
+=======
+        View v =inflater.inflate(R.layout.map_tab,container,false);
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+            ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+            mapPager.setSaveEnabled(false);
+            googleMap = (MapView) v.findViewById(R.id.googleMap);
+            gps = new GPSTracker(getActivity());
+            googleMap.onCreate(savedInstanceState);
+            googleMap.onResume();// needed to get the map to display immediately
+            try {
+                MapsInitializer.initialize(getActivity().getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+>>>>>>> origin/master
             }
         });
         if (checkPlayServices()) {
@@ -205,9 +226,13 @@ public class Map_Fragment extends Fragment {
                 } else {
                     gps.showSettingsAlert();
                 }
+<<<<<<< HEAD
             }
         });
 
+=======
+            });
+>>>>>>> origin/master
         return v;
     }
 

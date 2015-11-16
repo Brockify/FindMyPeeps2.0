@@ -22,11 +22,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,6 +79,7 @@ import java.util.Locale;
 public class Map_Fragment extends Fragment {
     Double latitude;
     Double longitude;
+    ListView listView;
     String lastUpdated = null;
     Marker userMarker = null;
     MapView googleMap;
@@ -98,29 +102,37 @@ public class Map_Fragment extends Fragment {
     double otherUserLong;
     String otherUserUsername;
     String otherUserComment;
-
-
-
-
-
+    ArrayList<String> groupnames;
+    int groupnum;
+    ArrayList<ArrayList<String>> groupFinal;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.map_tab,container,false);
-            Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
-            ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
-            mapPager.setSaveEnabled(false);
-            googleMap = (MapView) v.findViewById(R.id.googleMap);
-            gps = new GPSTracker(getActivity());
-            googleMap.onCreate(savedInstanceState);
-            googleMap.onResume();// needed to get the map to display immediately
-            try {
-                MapsInitializer.initialize(getActivity().getApplicationContext());
-            } catch (Exception e) {
-                e.printStackTrace();
+        View v = inflater.inflate(R.layout.map_tab, container, false);
+        Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+        Button GroupsButton = (Button)v.findViewById(R.id.GroupsButton);
+        ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+        mapPager.setSaveEnabled(false);
+        googleMap = (MapView) v.findViewById(R.id.googleMap);
+        gps = new GPSTracker(getActivity());
+        googleMap.onCreate(savedInstanceState);
+        groupFinal = new ArrayList<ArrayList<String>>();
+        googleMap.onResume();// needed to get the map to display immediately
+        try {
+            MapsInitializer.initialize(getActivity());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        GroupsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                groupnames = new ArrayList<String>();
+                new getGroups().execute();
+
             }
-        if(checkPlayServices()) {
+        });
+        if (checkPlayServices()) {
             googleMap.getMap().setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
                 @Override
                 //called once the map is done loading
@@ -159,42 +171,42 @@ public class Map_Fragment extends Fragment {
             });
         }
 
-            updateLocationButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //build a dialog for sending the location
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setView(R.layout.activity_popup_comment);
-                    if (gps.isGPSEnabledOrNot() && gps.canGetLocation()) {
-                        //sends a alert dialog making sure they want to delete the user
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Dialog dialoger = (Dialog) dialog;
-                                switch (which) {
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        EditText commentEditText = (EditText) dialoger.findViewById(R.id.commentEditText);
-                                        comments = commentEditText.getText().toString();
-                                        new getLocation().execute();
-                                        break;
+        updateLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //build a dialog for sending the location
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setView(R.layout.activity_popup_comment);
+                if (gps.isGPSEnabledOrNot() && gps.canGetLocation()) {
+                    //sends a alert dialog making sure they want to delete the user
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Dialog dialoger = (Dialog) dialog;
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    EditText commentEditText = (EditText) dialoger.findViewById(R.id.commentEditText);
+                                    comments = commentEditText.getText().toString();
+                                    new getLocation().execute();
+                                    break;
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //No button clicked
-                                        break;
-                                }
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    //No button clicked
+                                    break;
                             }
-                        };
-                        //build the dialog box
-                        builder.setTitle("Send Location");
-                        builder.setPositiveButton("Update Location", dialogClickListener);
-                        builder.setNegativeButton("Cancel", dialogClickListener);
-                        builder.create();
-                        builder.show();
-                    } else {
-                        gps.showSettingsAlert();
-                    }
+                        }
+                    };
+                    //build the dialog box
+                    builder.setTitle("Send Location");
+                    builder.setPositiveButton("Update Location", dialogClickListener);
+                    builder.setNegativeButton("Cancel", dialogClickListener);
+                    builder.create();
+                    builder.show();
+                } else {
+                    gps.showSettingsAlert();
                 }
-            });
+            }
+        });
 
         return v;
     }
@@ -227,8 +239,7 @@ public class Map_Fragment extends Fragment {
     public void onPause() {
         super.onPause();
         googleMap.onPause();
-        if(startupRun.getStatus() == AsyncTask.Status.RUNNING)
-        {
+        if (startupRun.getStatus() == AsyncTask.Status.RUNNING) {
             startupRun.cancel(true);
         }
     }
@@ -237,8 +248,7 @@ public class Map_Fragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         googleMap.onDestroy();
-        if(startupRun.getStatus() == AsyncTask.Status.RUNNING)
-        {
+        if (startupRun.getStatus() == AsyncTask.Status.RUNNING) {
             startupRun.cancel(true);
         }
     }
@@ -273,6 +283,7 @@ public class Map_Fragment extends Fragment {
 
     class MarkerScript extends AsyncTask<Void, Void, Void> {
         int userCounter = 0;
+
         @Override
         protected Void doInBackground(Void... strings) {
             HttpResponse response;
@@ -317,8 +328,7 @@ public class Map_Fragment extends Fragment {
                         latitude = json.getJSONObject(counter).getString("Latitude");
                         longitude = json.getJSONObject(counter).getString("Longitude");
                         lastUpdated = json.getJSONObject(counter).getString("LastUpdated");
-                        if (latitude.isEmpty()|| longitude.isEmpty() || lastUpdated.isEmpty())
-                        {
+                        if (latitude.isEmpty() || longitude.isEmpty() || lastUpdated.isEmpty()) {
 
                         } else {
                             String tempDate = lastUpdated.substring(5, 10);
@@ -331,7 +341,7 @@ public class Map_Fragment extends Fragment {
                             String tempTime = lastUpdated.substring(11, 13);
                             if (Integer.parseInt(tempTime) > 12) {
                                 tempTime = String.valueOf((Integer.parseInt(tempTime) - 12));
-                            }else if (Integer.parseInt(tempTime) < 10) {
+                            } else if (Integer.parseInt(tempTime) < 10) {
                                 tempTime = tempTime.substring(1);
                             }
                             String amOrPm = lastUpdated.substring(20, 22);
@@ -367,15 +377,15 @@ public class Map_Fragment extends Fragment {
 
             return null;
         }
+
         //insert data onto map and set the boundaries
         protected void onPostExecute(Void result) {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            for(int counter = 0; counter < mMyMarkersArray.size(); counter++) {
-                LatLng userLatLng= new LatLng(mMyMarkersArray.get(counter).getPosition().latitude, mMyMarkersArray.get(counter).getPosition().longitude);
+            for (int counter = 0; counter < mMyMarkersArray.size(); counter++) {
+                LatLng userLatLng = new LatLng(mMyMarkersArray.get(counter).getPosition().latitude, mMyMarkersArray.get(counter).getPosition().longitude);
                 builder.include(userLatLng);
             }
-            for(int counter = 0; counter < mMyMarkersArray.size(); counter++)
-            {
+            for (int counter = 0; counter < mMyMarkersArray.size(); counter++) {
                 googleMap.getMap().addMarker(mMyMarkersArray.get(counter));
             }
             if (userMarker != null) {
@@ -387,6 +397,7 @@ public class Map_Fragment extends Fragment {
             googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(friendsListBoundaries, 100));
         }
     }
+
     //gets the profile pictures of a user when clicked
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
@@ -416,6 +427,7 @@ public class Map_Fragment extends Fragment {
 
         }
     }
+
     //gets the location class (ASYNC)
     public class getLocation extends AsyncTask<Void, Void, Void> {
 
@@ -443,8 +455,7 @@ public class Map_Fragment extends Fragment {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             int amorpmint = c.get(Calendar.AM_PM);
             String amorpm;
-            if (amorpmint == 0)
-            {
+            if (amorpmint == 0) {
                 amorpm = "AM";
             } else {
                 amorpm = "PM";
@@ -509,7 +520,7 @@ public class Map_Fragment extends Fragment {
                 new DownloadImageTask().execute(urlTest, user);
             }
 
-            if(userMarker != null) {
+            if (userMarker != null) {
                 userMarker.remove();
             }
             userMarker = googleMap.getMap().addMarker(new MarkerOptions().position(userCurrentLocation).title(user).icon(BitmapDescriptorFactory.fromBitmap(icon)));
@@ -518,5 +529,86 @@ public class Map_Fragment extends Fragment {
 
         }
     }
+
     //--------------------------------------------Finish getLocation()-----------------------------------
+
+
+    class getGroups extends AsyncTask<Void, Void, Void> {
+
+        private ProgressDialog pDialog;
+        String responseStr;
+
+        @Override
+        protected void onPreExecute() {
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("getting groups");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            HttpResponse response;
+            String responseStr = null;
+            String groups;
+            String jsonStr = null;
+            JSONArray json = null;
+            // Create a new HttpClient and Post Header
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://www.skyrealmstudio.com/cgi-bin/testcgi-bin/ListGroups.py");
+
+
+            try {
+                // Add your data
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("username", "rockyfish"));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                // Execute HTTP Post Request
+                response = httpclient.execute(httppost);
+                responseStr = EntityUtils.toString(response.getEntity());
+                jsonStr = responseStr;
+
+
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+            }
+            System.out.println(responseStr);
+            try {
+                json = new JSONArray(jsonStr);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            for (int counter = 0; counter < json.length(); counter++)
+                try {
+                    groups = json.getJSONObject(counter).getString("groupnames");
+                    groupnum = json.getJSONObject(counter).getInt("groupnumber");
+                    groupnames.add(groups);
+                    groupFinal.get(counter).add(0, String.valueOf(groups));
+                    groupFinal.get(counter).add(1, String.valueOf(groupnum));
+                    Log.d("Message:", groupnames.get(counter));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            return null;
+
+        }
+
+        public void onPostExecute(Void result)
+        {
+            Bundle bundle = new Bundle();
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getLayoutInflater(bundle);
+            View convertView = (View) inflater.inflate(R.layout.activity_popup_groups, null);
+            alertDialog.setView(convertView);
+            ListView lv = (ListView) convertView.findViewById(R.id.grouplistView);
+            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.activity_group_list_layout, R.id.groupname, groupFinal.get(0));
+            lv.setAdapter(adapter);
+            alertDialog.show();
+        }
+    }
+
 }

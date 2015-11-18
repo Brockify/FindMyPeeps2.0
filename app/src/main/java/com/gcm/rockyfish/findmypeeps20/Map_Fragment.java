@@ -92,6 +92,7 @@ public class Map_Fragment extends Fragment {
     private ArrayList<MarkerOptions> mMyMarkersArray = new ArrayList<MarkerOptions>();
     LatLngBounds friendsListBoundaries;
     LatLng userCurrentLocation;
+    LatLngBounds bounds;
     MarkerScript startupRun;
     Bitmap icon;
     String user = "rockyfish";
@@ -101,15 +102,16 @@ public class Map_Fragment extends Fragment {
     String comments;
     String Number = "MTAwMDAwMDEzMw==";
     LatLng otherUserLocation;
-    boolean isOtherUserClicked;
+    boolean isOtherUserClicked = false;
     Marker otherUserMarker;
-    double otherUserLat;
-    double otherUserLong;
-    String otherUserUsername;
-    String otherUserComment;
+    double otherUserLat = 0;
+    double otherUserLong = 0;
+    String otherUserUsername = null;
+    String otherUserComment = null;
     ArrayList<String> groupnames;
     int groupnum;
     List<ArrayList<String>> groupFinal;
+    Bundle bundle;
 
 
     @Override
@@ -122,7 +124,20 @@ public class Map_Fragment extends Fragment {
         googleMap = (MapView) v.findViewById(R.id.googleMap);
         gps = new GPSTracker(getActivity());
         googleMap.onCreate(savedInstanceState);
+        icon = BitmapFactory.decodeResource(getResources(),
+                R.drawable.action_logo);
         groupFinal = new ArrayList<ArrayList<String>>();
+        if(bundle != null) {
+            otherUserLat = bundle.getDouble("otherLat");
+            otherUserLong = bundle.getDouble("otherLong");
+            isOtherUserClicked = bundle.getBoolean("isOtherUserClicked");
+            user = bundle.getString("username");
+            otherUserComment = bundle.getString("otherComment");
+            otherUserUsername = bundle.getString("userUsername");
+            Number = bundle.getString("Number");
+        }
+
+
         googleMap.onResume();// needed to get the map to display immediately
         try {
             MapsInitializer.initialize(getActivity());
@@ -146,29 +161,15 @@ public class Map_Fragment extends Fragment {
                             latitude = gps.getLocation().getLatitude();
                             longitude = gps.getLocation().getLongitude();
                             userCurrentLocation = new LatLng(latitude, longitude);
-                            //if (isOtherUserClicked) {
-                            //get the extras
-                            //  otherUserLat = getIntent().getExtras().getDouble("otherLat");
-                            //otherUserLong = getIntent().getExtras().getDouble("otherLong");
-                            //otherUserUsername = getIntent().getExtras().getString("userUsername");
-                            //otherUserComment = getIntent().getExtras().getString("otherComment");
-                            //zoom to show both the users location and the user clicked location
-                            //otherUserLocation = new LatLng(otherUserLat, otherUserLong);
-                            //LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                            //builder.include(userCurrentLocation);
-                            //builder.include(otherUserLocation);
-                            //bounds = builder.build();
-                            //String urlTest = "http://skyrealmstudio.com/img/" + otherUserUsername.toLowerCase() + ".jpg";
-                            //new DownloadImageTask().execute(urlTest, otherUserUsername);
-                            //int padding = 50;
-                            //googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
-                            //userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
-                            //} else {
+                            if (isOtherUserClicked) {
+
+                            String urlTest = "http://skyrealmstudio.com/img/" + otherUserUsername.toLowerCase() + ".jpg";
+                            new DownloadImageTask().execute(urlTest, otherUserUsername);
+                            } else {
                             //set friends on the map
                             startupRun = new MarkerScript();
                             startupRun.execute();
-                            // userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
-                            //}
+                            }
                         } else {
                             gps.showSettingsAlert();
                         }
@@ -238,6 +239,16 @@ public class Map_Fragment extends Fragment {
         googleMap.onResume();
         startupRun = new MarkerScript();
         startupRun.execute();
+        bundle = ((TabLayout) getActivity()).getBundle();
+        if(bundle != null) {
+            otherUserLat = bundle.getDouble("otherLat");
+            otherUserLong = bundle.getDouble("otherLong");
+            isOtherUserClicked = bundle.getBoolean("isOtherUserClicked");
+            user = bundle.getString("username");
+            otherUserComment = bundle.getString("otherComment");
+            otherUserUsername = bundle.getString("userUsername");
+            Number = bundle.getString("Number");
+        }
     }
 
     @Override
@@ -398,8 +409,16 @@ public class Map_Fragment extends Fragment {
                 userMarker = googleMap.getMap().addMarker(new MarkerOptions().title("rockyfish").position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
                 builder.include(userCurrentLocation);
             }
-            friendsListBoundaries = builder.build();
-            googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(friendsListBoundaries, 100));
+                friendsListBoundaries = builder.build();
+                if(mMyMarkersArray.size() > 0) {
+                    if (userMarker != null) {
+                        userMarker.remove();
+                        userMarker = googleMap.getMap().addMarker(new MarkerOptions().title("rockyfish").position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+                        builder.include(userCurrentLocation);
+                    } else {
+                        googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(friendsListBoundaries, 100));
+                    }
+                }
         }
     }
 
@@ -416,6 +435,7 @@ public class Map_Fragment extends Fragment {
                 e.printStackTrace();
             }
             return mIcon11;
+
         }
 
         protected void onPostExecute(Bitmap result) {
@@ -430,7 +450,28 @@ public class Map_Fragment extends Fragment {
                     .snippet(otherUserComment)
                     .icon(BitmapDescriptorFactory.fromBitmap(bhalfsize)));
 
+            if(isOtherUserClicked)
+            {
+                int padding = 50;
+                //zoom to show both the users location and the user clicked location
+                otherUserLocation = new LatLng(otherUserLat, otherUserLong);
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                builder.include(userCurrentLocation);
+                builder.include(otherUserLocation);
+                bounds = builder.build();
+                googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+
+                userMarker = googleMap.getMap().addMarker(new MarkerOptions()
+                        .position(new LatLng(latitude, longitude))
+                        .title(user)
+                        .snippet(comments)
+                        .icon(BitmapDescriptorFactory.fromBitmap(icon)));
+
+            }
+
         }
+
+
     }
 
     //gets the location class (ASYNC)

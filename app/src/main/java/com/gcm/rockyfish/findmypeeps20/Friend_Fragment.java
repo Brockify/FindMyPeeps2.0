@@ -3,42 +3,36 @@ package com.gcm.rockyfish.findmypeeps20;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.app.TabActivity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tagmanager.Container;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -52,8 +46,10 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,13 +63,16 @@ import java.util.Locale;
 public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG_FRIEND = "friend";
 
+    TextView BioView, commentView;
+    ProgressDialog pDialog;
     List<String> FriendsList;
     ListView friendListView;
     getFriendsList loadFriendsList;
     SwipeRefreshLayout swipeLayout;
     Button deleteFriendButton;
     FriendsAdapter adapter;
-    private String user;
+    private String user = "rockyfish";
+    String friend;
     private String userBeingClicked;
     private Double latitude;
     private Double longitude;
@@ -91,15 +90,21 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
     SearchView sv;
     SearchAdapter searchAdapter;
     ArrayList Friends;
-
-
+    private static final String LOGIN_URL = "http://skyrealmstudio.com/cgi-bin/GetFriend.py";
+    private static final String TAG_MESSAGE = "bio";
+    private static final String TAG_COMMENT = "comment";
+    String Number = "MTAwMDAwMDEzMw==";
+    JSONParser jsonParser = new JSONParser();
+    String Bio;
+    String comment;
+    AlertDialog alert;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.friends_tab, container, false);
         //set a swipe refresh layout
         swipeLayout = (SwipeRefreshLayout) v.findViewById(R.id.friendsRefresh);
-        deleteFriendButton = (Button) inflater.inflate(R.layout.friends_list_items, container, false).findViewById(R.id.deleteButton);
+        deleteFriendButton = (Button) inflater.inflate(R.layout.friends_list_items, container, false).findViewById(R.id.profileButton);
         friendListView = (ListView) v.findViewById(R.id.friendListView);
         swipeLayout.setOnRefreshListener(this);
         swipeLayout.setColorScheme(android.R.color.holo_blue_bright,
@@ -264,16 +269,89 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
                 friendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                     public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-                        TextView tv = (TextView) v.findViewById(R.id.username);
+                        final TextView userDeleteText = (TextView) v.findViewById(R.id.username);
+                        LayoutInflater lv = LayoutInflater.from(getActivity());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        final View promptView = lv.inflate(R.layout.popup_friendlist_clicked, null);
+                        builder.setView(promptView);
+                        alert = builder.create();
+                        alert.show();
+                        friend = userDeleteText.getText().toString();
+                        Button locate = (Button) promptView.findViewById(R.id.locateButton);
+                        Button profile = (Button) promptView.findViewById(R.id.profileButton);
+                        Button delete = (Button) promptView.findViewById(R.id.deleteButton);
 
-                        userBeingClicked = tv.getText().toString();
+                        locate.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                userUsername = userDeleteText.getText().toString();
+                                new getSpecificUserLocation().execute(userUsername);
 
-                        userUsername = userBeingClicked;
-                        new getSpecificUserLocation().execute(userBeingClicked);
+                            }
+                        });
+
+                        profile.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                LayoutInflater lv = LayoutInflater.from(getActivity());
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                View promptView = lv.inflate(R.layout.activity_fprofile, null);
+                                builder.setView(promptView);
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+                                TextView usernameTextView = (TextView) promptView.findViewById(R.id.friendTextView);
+                                usernameTextView.setText(userDeleteText.getText());
+                                BioView = (TextView) promptView.findViewById(R.id.friendBio);
+                                commentView = (TextView) promptView.findViewById(R.id.friendlastcomment);
+                                new DownloadImageTask((ImageView) promptView.findViewById(R.id.imgView))
+                                        .execute("http://skyrealmstudio.com/img/" + userDeleteText.getText().toString().toLowerCase() + "orig.jpg");
+                                new AttemptGrabs().execute();
 
 
-                    }
-                });
+                            }
+                        });
+
+                        delete.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //sends a alert dialog making sure they want to delete the user
+                                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which) {
+                                            case DialogInterface.BUTTON_POSITIVE:
+                                                //Yes button clicked
+                                                // send post
+                                                String htmlUrl = "http://www.skyrealmstudio.com/cgi-bin/DeleteFriend.py";
+                                                HTTPSendPost sendPost = new HTTPSendPost();
+                                                userDelete[0] = userDeleteText.getText().toString();
+                                                sendPost.setUpOnDeleteFriend("Rockyfish", userDelete[0], htmlUrl, "MTAwMDAwMDEzMw==");
+                                                sendPost.execute();
+                                                Toast.makeText(getContext(), userDelete[0] + " deleted.", Toast.LENGTH_LONG).show();
+                                                //set everything to be not visible
+                                                userDeleteText.setVisibility(View.GONE);
+                                                break;
+
+                                            case DialogInterface.BUTTON_NEGATIVE:
+                                                //No button clicked
+                                                break;
+                                        }
+                                    }
+                                };
+                                //
+
+                                //show the dialog
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                builder.setMessage("Are you sure you would like to delete " + userDeleteText.getText().toString() + " as a friend.").setPositiveButton("Yes", dialogClickListener)
+                                        .setNegativeButton("No", dialogClickListener).show();
+                                //
+
+
+                            }
+                        });
+                            }
+                        });
             }
         }
 
@@ -309,56 +387,6 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
             v = inflater.inflate(R.layout.friends_list_items, null);
             TextView usernameTextView = (TextView) v.findViewById(R.id.username);
             usernameTextView.setText(friendslist.get(position));
-
-            Button delete = (Button) v.findViewById(R.id.deleteButton);
-            delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    // TODO Auto-generated method stub
-                    RelativeLayout vwParentRow = (RelativeLayout) v.getParent();
-
-                    final Button deleteButton = (Button) vwParentRow.findViewById(R.id.deleteButton);
-                    final TextView userDeleteText = (TextView) vwParentRow.findViewById(R.id.username);
-                    final Button profileButton = (Button) vwParentRow.findViewById(R.id.profileButton);
-
-                    //sends a alert dialog making sure they want to delete the user
-                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            switch (which) {
-                                case DialogInterface.BUTTON_POSITIVE:
-                                    //Yes button clicked
-                                    // send post
-                                    String htmlUrl = "http://www.skyrealmstudio.com/cgi-bin/DeleteFriend.py";
-                                    HTTPSendPost sendPost = new HTTPSendPost();
-                                    userDelete[0] = userDeleteText.getText().toString();
-                                    sendPost.setUpOnDeleteFriend("Rockyfish", userDelete[0], htmlUrl, "MTAwMDAwMDEzMw==");
-                                    sendPost.execute();
-                                    Toast.makeText(getContext(), userDelete[0] + " deleted.", Toast.LENGTH_LONG).show();
-                                    //set everything to be not visible
-                                    deleteButton.setVisibility(View.GONE);
-                                    profileButton.setVisibility(View.GONE);
-                                    userDeleteText.setVisibility(View.GONE);
-                                    break;
-
-                                case DialogInterface.BUTTON_NEGATIVE:
-                                    //No button clicked
-                                    break;
-                            }
-                        }
-                    };
-                    //
-
-                    //show the dialog
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setMessage("Are you sure you would like to delete " + userDeleteText.getText().toString() + " as a friend.").setPositiveButton("Yes", dialogClickListener)
-                            .setNegativeButton("No", dialogClickListener).show();
-                    //
-
-
-                }
-            });
 
             return v;
         }
@@ -502,12 +530,14 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
                 bundle.putString("otherComment", userComment);
                 bundle.putString("userUsername", userUsername);
                 bundle.putString("Number", "MTAwMDAwMDEzMw==");
-                Fragment fragment = new Map_Fragment();
-                fragment.setArguments(bundle);
                 // Insert the fragment by replacing any existing fragment
-                final FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.friendFragment, fragment).addToBackStack("next").commit();
+                ((TabLayout) getActivity()).setUpBundle(bundle);
+                ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
+                viewPager.setCurrentItem(0, true);
+
+                alert.cancel();
             }
+
         }
     }
 
@@ -576,5 +606,86 @@ public class Friend_Fragment extends Fragment implements SwipeRefreshLayout.OnRe
             }
         }
     }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
+    }
+
+    class AttemptGrabs extends AsyncTask<String, String, Void> {
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        boolean failure = false;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Loading Profile...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(String... args) {
+            // TODO Auto-generated method stub
+            // here Check for success tag
+            try {
+
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("username", user));
+                params.add(new BasicNameValuePair("friend", friend));
+                params.add(new BasicNameValuePair("Number", Number));
+
+
+                JSONObject json = jsonParser.makeHttpRequest(
+                        LOGIN_URL, "POST", params);
+
+                // checking  log for json response
+
+                // success tag for json
+                Bio = json.getString(TAG_MESSAGE);
+                comment = json.getString(TAG_COMMENT);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+        /**
+         * Once the background process is done we need to  Dismiss the progress dialog asap
+         * **/
+        protected void onPostExecute(Void message) {
+            BioView.setText(Bio);
+            commentView.setText(comment);
+            pDialog.dismiss();
+        }
+    }
+
+
 
 }

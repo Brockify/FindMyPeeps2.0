@@ -236,7 +236,7 @@ public class Login extends Activity implements OnClickListener, View.OnTouchList
                     First = json.getString(TAG_FIRSTLOG);
                     Number = json.getString(TAG_ID);
                     Intent ii = new Intent(Login.this, TabLayout.class);
-                    ii.putExtra("username", username);
+                    ii.putExtra("username", username.toLowerCase());
                     ii.putExtra("Number", Number);
                     ii.putExtra("First",First);
 

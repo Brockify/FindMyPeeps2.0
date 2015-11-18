@@ -20,6 +20,7 @@ import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -112,7 +113,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
     public void setDistributeEvenly(boolean distributeEvenly) {
         mDistributeEvenly = distributeEvenly;
     }
-
     /**
      * Sets the colors to be used for indicating the selected tab. These colors are treated as a
      * circular array. Providing one color will mean that all tabs are indicated with the same color.
@@ -240,7 +240,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
         }
     }
 
-    private void scrollToTab(int tabIndex, int positionOffset) {
+    public void scrollToTab(int tabIndex, int positionOffset) {
         final int tabStripChildCount = mTabStrip.getChildCount();
         if (tabStripChildCount == 0 || tabIndex < 0 || tabIndex >= tabStripChildCount) {
             return;

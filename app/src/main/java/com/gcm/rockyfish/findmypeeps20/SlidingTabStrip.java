@@ -72,6 +72,8 @@ class SlidingTabStrip extends LinearLayout {
         mSelectedIndicatorPaint = new Paint();
     }
 
+
+
     void setCustomTabColorizer(SlidingTabLayout.TabColorizer customTabColorizer) {
         mCustomTabColorizer = customTabColorizer;
         invalidate();
@@ -162,4 +164,6 @@ class SlidingTabStrip extends LinearLayout {
             mIndicatorColors = colors;
         }
     }
+
+
 }

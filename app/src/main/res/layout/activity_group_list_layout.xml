@@ -6,7 +6,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/groupname"
+=======
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/groupname"
+        android:text="groupname"
+>>>>>>> origin/master
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

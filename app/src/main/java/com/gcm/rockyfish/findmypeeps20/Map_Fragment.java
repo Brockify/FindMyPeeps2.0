@@ -27,19 +27,27 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.ArrayAdapter;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+=======
+<<<<<<< HEAD
+import android.widget.ArrayAdapter;
+=======
+import android.view.inputmethod.InputMethodManager;
+>>>>>>> origin/master
+import android.widget.Button;
+import android.widget.EditText;
+>>>>>>> origin/master
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -104,6 +112,7 @@ public class Map_Fragment extends Fragment {
     LatLng otherUserLocation;
     boolean isOtherUserClicked = false;
     Marker otherUserMarker;
+<<<<<<< HEAD
     double otherUserLat = 0;
     double otherUserLong = 0;
     String otherUserUsername = null;
@@ -137,6 +146,15 @@ public class Map_Fragment extends Fragment {
             Number = bundle.getString("Number");
         }
 
+=======
+    double otherUserLat;
+    double otherUserLong;
+    String otherUserUsername;
+    String otherUserComment;
+    ArrayList<String> groupnames;
+    int groupnum;
+    ArrayList<ArrayList<String>> groupFinal;
+>>>>>>> origin/master
 
         googleMap.onResume();// needed to get the map to display immediately
         try {
@@ -150,6 +168,7 @@ public class Map_Fragment extends Fragment {
                 groupnames = new ArrayList<String>();
                 new getGroups().execute();
 
+<<<<<<< HEAD
             }
         });
             if (checkPlayServices()) {
@@ -173,47 +192,208 @@ public class Map_Fragment extends Fragment {
                         } else {
                             gps.showSettingsAlert();
                         }
+=======
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+<<<<<<< HEAD
+        View v = inflater.inflate(R.layout.map_tab, container, false);
+        Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+        Button GroupsButton = (Button)v.findViewById(R.id.GroupsButton);
+        ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+        mapPager.setSaveEnabled(false);
+        googleMap = (MapView) v.findViewById(R.id.googleMap);
+        gps = new GPSTracker(getActivity());
+        googleMap.onCreate(savedInstanceState);
+        groupFinal = new ArrayList<ArrayList<String>>();
+        googleMap.onResume();// needed to get the map to display immediately
+        try {
+            MapsInitializer.initialize(getActivity());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        GroupsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                groupnames = new ArrayList<String>();
+                new getGroups().execute();
+
+=======
+        View v =inflater.inflate(R.layout.map_tab,container,false);
+<<<<<<< HEAD
+<<<<<<< HEAD
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+            ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+            mapPager.setSaveEnabled(false);
+            googleMap = (MapView) v.findViewById(R.id.googleMap);
+            gps = new GPSTracker(getActivity());
+            googleMap.onCreate(savedInstanceState);
+            googleMap.onResume();// needed to get the map to display immediately
+            try {
+                MapsInitializer.initialize(getActivity().getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+>>>>>>> origin/master
+            }
+        });
+        if (checkPlayServices()) {
+            googleMap.getMap().setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                //called once the map is done loading
+                public void onMapLoaded() {
+                    if (gps.isGPSEnabledOrNot() && gps.canGetLocation() && gps.getLatitude() != 0 && gps.getLongitude() != 0) {
+                        latitude = gps.getLocation().getLatitude();
+                        longitude = gps.getLocation().getLongitude();
+                        userCurrentLocation = new LatLng(latitude, longitude);
+                        //if (isOtherUserClicked) {
+                        //get the extras
+                        //  otherUserLat = getIntent().getExtras().getDouble("otherLat");
+                        //otherUserLong = getIntent().getExtras().getDouble("otherLong");
+                        //otherUserUsername = getIntent().getExtras().getString("userUsername");
+                        //otherUserComment = getIntent().getExtras().getString("otherComment");
+                        //zoom to show both the users location and the user clicked location
+                        //otherUserLocation = new LatLng(otherUserLat, otherUserLong);
+                        //LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                        //builder.include(userCurrentLocation);
+                        //builder.include(otherUserLocation);
+                        //bounds = builder.build();
+                        //String urlTest = "http://skyrealmstudio.com/img/" + otherUserUsername.toLowerCase() + ".jpg";
+                        //new DownloadImageTask().execute(urlTest, otherUserUsername);
+                        //int padding = 50;
+                        //googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+                        //userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+                        //} else {
+                        //set friends on the map
+                        startupRun = new MarkerScript();
+                        startupRun.execute();
+                        // userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+                        //}
+                    } else {
+                        gps.showSettingsAlert();
+>>>>>>> origin/master
                     }
                 });
             }
 
-            updateLocationButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //build a dialog for sending the location
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setView(R.layout.activity_popup_comment);
-                    if (gps.isGPSEnabledOrNot() && gps.canGetLocation()) {
-                        //sends a alert dialog making sure they want to delete the user
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Dialog dialoger = (Dialog) dialog;
-                                switch (which) {
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        EditText commentEditText = (EditText) dialoger.findViewById(R.id.commentEditText);
-                                        comments = commentEditText.getText().toString();
-                                        new getLocation().execute();
-                                        break;
+=======
+        ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+        mapPager.setSaveEnabled(false);
+        googleMap = (MapView) v.findViewById(R.id.googleMap);
+        gps = new GPSTracker(getActivity());
+        googleMap.onCreate(savedInstanceState);
+        googleMap.onResume();// needed to get the map to display immediately
+        Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //No button clicked
-                                        break;
-                                }
-                            }
-                        };
-                        //build the dialog box
-                        builder.setTitle("Send Location");
-                        builder.setPositiveButton("Update Location", dialogClickListener);
-                        builder.setNegativeButton("Cancel", dialogClickListener);
-                        builder.create();
-                        builder.show();
-                    } else {
-                        gps.showSettingsAlert();
-                    }
+=======
+        ViewPager mapPager = (ViewPager) v.findViewById(R.id.mapPager);
+        mapPager.setSaveEnabled(false);
+        googleMap = (MapView) v.findViewById(R.id.googleMap);
+        gps = new GPSTracker(getActivity());
+        googleMap.onCreate(savedInstanceState);
+        googleMap.onResume();// needed to get the map to display immediately
+        Button updateLocationButton = (Button) v.findViewById(R.id.getLocationButton);
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+>>>>>>> parent of e23bf53... cvcvcvc
+        googleMap.getMap().setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            //called once the map is done loading
+            public void onMapLoaded() {
+                if (gps.isGPSEnabledOrNot() && gps.canGetLocation() && gps.getLatitude() != 0 && gps.getLongitude() != 0) {
+                    latitude = gps.getLocation().getLatitude();
+                    longitude = gps.getLocation().getLongitude();
+                    userCurrentLocation = new LatLng(latitude, longitude);
+                    //if (isOtherUserClicked) {
+                    //get the extras
+                    //  otherUserLat = getIntent().getExtras().getDouble("otherLat");
+                    //otherUserLong = getIntent().getExtras().getDouble("otherLong");
+                    //otherUserUsername = getIntent().getExtras().getString("userUsername");
+                    //otherUserComment = getIntent().getExtras().getString("otherComment");
+                    //zoom to show both the users location and the user clicked location
+                    //otherUserLocation = new LatLng(otherUserLat, otherUserLong);
+                    //LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                    //builder.include(userCurrentLocation);
+                    //builder.include(otherUserLocation);
+                    //bounds = builder.build();
+                    //String urlTest = "http://skyrealmstudio.com/img/" + otherUserUsername.toLowerCase() + ".jpg";
+                    //new DownloadImageTask().execute(urlTest, otherUserUsername);
+                    //int padding = 50;
+                    //googleMap.getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+                    //userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+                    //} else {
+                    //set friends on the map
+                    startupRun = new MarkerScript();
+                    startupRun.execute();
+                    // userMarker = googleMap.getMap().addMarker(new MarkerOptions().title(user).position(userCurrentLocation).icon(BitmapDescriptorFactory.fromBitmap(icon)));
+
+                    //}
+                } else {
+                    gps.showSettingsAlert();
                 }
-            });
+            }
+        });
 
+<<<<<<< HEAD
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
+        updateLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //build a dialog for sending the location
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setView(R.layout.activity_popup_comment);
+                if (gps.isGPSEnabledOrNot() && gps.canGetLocation()) {
+                    //sends a alert dialog making sure they want to delete the user
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Dialog dialoger = (Dialog) dialog;
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    EditText commentEditText = (EditText) dialoger.findViewById(R.id.commentEditText);
+                                    comments = commentEditText.getText().toString();
+                                    new getLocation().execute();
+                                    break;
+
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    //No button clicked
+                                    break;
+                            }
+                        }
+                    };
+                    //build the dialog box
+                    builder.setTitle("Send Location");
+                    builder.setPositiveButton("Update Location", dialogClickListener);
+                    builder.setNegativeButton("Cancel", dialogClickListener);
+                    builder.create();
+                    builder.show();
+                } else {
+                    gps.showSettingsAlert();
+                }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+            }
+        });
+
+=======
+            });
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
         return v;
     }
 
@@ -227,10 +407,13 @@ public class Map_Fragment extends Fragment {
                 GooglePlayServicesUtil.getErrorDialog(resultCode, getActivity(), 9000).show();
             } else {
                 Toast.makeText(getActivity(), "Google Play Services are not all up to date, would you like to update?", Toast.LENGTH_LONG).show();
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
+>>>>>>> parent of e23bf53... cvcvcvc
             }
-            return false;
-        }
-        return true;
+        });
+        return v;
     }
 
     @Override
@@ -565,10 +748,18 @@ public class Map_Fragment extends Fragment {
 
                 new DownloadImageTask().execute(urlTest, user);
             }
+<<<<<<< HEAD
+<<<<<<< HEAD
 
             if (userMarker != null) {
                 userMarker.remove();
             }
+=======
+            //userMarker.remove();
+>>>>>>> parent of e23bf53... cvcvcvc
+=======
+            //userMarker.remove();
+>>>>>>> parent of e23bf53... cvcvcvc
             userMarker = googleMap.getMap().addMarker(new MarkerOptions().position(userCurrentLocation).title(user).icon(BitmapDescriptorFactory.fromBitmap(icon)));
             gps.stopUsingGps();
             pDialog.dismiss();
@@ -603,7 +794,10 @@ public class Map_Fragment extends Fragment {
             // Create a new HttpClient and Post Header
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost("http://www.skyrealmstudio.com/cgi-bin/testcgi-bin/ListGroups.py");
+<<<<<<< HEAD
             groupFinal = new ArrayList<ArrayList<String>>();
+=======
+>>>>>>> origin/master
 
 
             try {
@@ -634,15 +828,23 @@ public class Map_Fragment extends Fragment {
                     groups = json.getJSONObject(counter).getString("groupnames");
                     groupnum = json.getJSONObject(counter).getInt("groupnumber");
                     groupnames.add(groups);
+<<<<<<< HEAD
                     ArrayList<String> check = new ArrayList<String>();
                     check.add(groups);
                     check.add(String.valueOf(groupnum));
                     groupFinal.add(check);
+=======
+                    groupFinal.get(counter).add(0, String.valueOf(groups));
+                    groupFinal.get(counter).add(1, String.valueOf(groupnum));
+>>>>>>> origin/master
                     Log.d("Message:", groupnames.get(counter));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+<<<<<<< HEAD
             Log.d("Message", String.valueOf(groupFinal));
+=======
+>>>>>>> origin/master
             return null;
 
         }
@@ -655,6 +857,7 @@ public class Map_Fragment extends Fragment {
             View convertView = (View) inflater.inflate(R.layout.activity_popup_groups, null);
             alertDialog.setView(convertView);
             ListView lv = (ListView) convertView.findViewById(R.id.grouplistView);
+<<<<<<< HEAD
             groupnames.clear();
             for(int i = 0; i < groupFinal.size(); i++)
             {
@@ -665,6 +868,11 @@ public class Map_Fragment extends Fragment {
             lv.setAdapter(adapter);
             alertDialog.show();
             pDialog.cancel();
+=======
+            ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.activity_group_list_layout, R.id.groupname, groupFinal.get(0));
+            lv.setAdapter(adapter);
+            alertDialog.show();
+>>>>>>> origin/master
         }
     }
 
